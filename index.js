@@ -6,7 +6,6 @@ const Router = require("./Routes/userRouter")
 const bodyParser = require('body-parser');
 const cors = require("cors")
 
-
 mongoose.connect("mongodb://127.0.0.1:27017/UserManagment")
 .then(()=>{
     console.log("db is connected");
