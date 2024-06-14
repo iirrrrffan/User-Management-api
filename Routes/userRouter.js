@@ -5,7 +5,8 @@ const userControll = require("../controller/userController")
 userRoute.post("/create",userControll.createUser)
 .post("/log",userControll.logUser)
 .put("/:id",userControll.updateUser)
-.get("/:id",userControll.getbyId)
-
-
+.get("/:id/user",userControll.getbyId)
+.get("/allUsers",userControll.getAllUsers)
+.delete("/:id/dlt",userControll.deleteUser)
+.put('/:id/block', userControll.blockUserById);
 module.exports = userRoute
