@@ -142,11 +142,34 @@ const blockUserById = async (req, res) => {
     }
     user.isBlocked = true;
     await user.save();
-    res.json(user);
+   
+
+     res.status(200).json({
+      status:"done",
+    })
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 };
 
+const unblockUserById = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const user = await userSchema.findById(id);
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+    user.isBlocked = false;
+    await user.save();
 
-module.exports= {createUser,logUser,updateUser,getbyId,getAllUsers,deleteUser,blockUserById}
+    res.status(200).json({
+      status: 'done',
+      message: 'User unblocked successfully',
+      user
+    });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+module.exports= {createUser,logUser,updateUser,getbyId,getAllUsers,deleteUser,blockUserById,unblockUserById}

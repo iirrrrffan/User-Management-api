@@ -8,5 +8,6 @@ userRoute.post("/create",userControll.createUser)
 .get("/:id/user",userControll.getbyId)
 .get("/allUsers",userControll.getAllUsers)
 .delete("/:id/dlt",userControll.deleteUser)
-.put('/:id/block', userControll.blockUserById);
+.put('/:id/block', userControll.blockUserById)
+.put('/:id/unblock', userControll.unblockUserById);
 module.exports = userRoute
